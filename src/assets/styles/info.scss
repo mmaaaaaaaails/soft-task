@@ -1,0 +1,163 @@
+@import "variables";
+@import "mixin";
+
+* {
+  font-family: 'Lato', sans-serif;
+}
+
+.info {
+  background-image: url('../images/info/bg-persons.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  padding: 100px 40px 200px;
+
+  &_block {
+    margin: 100px 0 80px;
+  }
+
+  &_title {
+    @include text(700, 48px, 68px, $dark);
+    text-transform: uppercase;
+    overflow: hidden;
+    &-highlight {
+      color: $highlight-medium;
+    }
+  }
+
+  &_lists {
+    @include text(700, 20px, 25px, $dark);
+    overflow: hidden;
+    &-weight {
+      font-weight: 400;
+      margin-bottom: 5px;
+      list-style: none;
+
+      &:first-child {
+        margin-top: 10px;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &_buttons {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 80px 0 0 0;
+  }
+
+  &_button {
+    @include text(400, 13px, 16px, $dark);
+    border-radius: 4px;
+    text-transform: uppercase;
+    padding: 15px 40px;
+    outline: none;
+    cursor: pointer;
+    background-position: 100% 0;
+    background-size: 200% 100%;
+    transition: all 0.5s ease-in;
+    box-sizing: border-box;
+
+    &-order {
+      border: 1px solid $light;
+      color: $light;
+      margin-right: 40px;
+      background-image: linear-gradient(to left, $highlight, $highlight 50%, $light 50%, $light);
+      &:hover {
+        color: $highlight;
+        background-position: 0 0;
+        border: 1px solid $highlight;
+      }
+    }
+
+    &-detail {
+      border: 1px solid $gray-dark;
+      color: $dark;
+      background-image: linear-gradient(to left, $light, $light 50%, $highlight 50%, $highlight);
+      &:hover {
+        color: $light;
+        background-position: 0 0;
+        border: 1px solid $highlight;
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .info {
+    padding: 100px 40px;
+
+    &_block {
+      margin: 60px 0 40px;
+    }
+
+    &_title {
+      @include text(700, 32px, 52px, $dark);
+    }
+
+    &_lists {
+      @include text(700, 18px, 22px, $dark);
+      &-weight {
+        font-weight: 400;
+        margin-bottom: 5px;
+        list-style: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .info {
+    padding: 100px 40px 80px;
+
+    &_block {
+      margin: 40px 0 20px;
+    }
+
+    &_title {
+      @include text(700, 24px, 30px, $dark);
+    }
+
+    &_lists {
+      @include text(700, 16px, 20px, $dark);
+      &-weight {
+        font-weight: 400;
+        margin-bottom: 5px;
+        list-style: none;
+      }
+    }
+
+    &_buttons {
+      margin: 40px 0 0 0;
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .info {
+    padding: 100px 40px 40px;
+
+    &_block {
+      margin: 30px 0 20px;
+    }
+
+    &_title {
+      @include text(700, 22px, 28px, $dark);
+    }
+
+    &_buttons {
+      flex-direction: column;
+    }
+    &_button {
+      @include textEllipsis;
+      max-width: 240px;
+      &-order {
+        margin-right: 0;
+        margin-bottom: 20px;
+      }
+    }
+  }
+}

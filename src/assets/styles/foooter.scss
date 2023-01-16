@@ -1,0 +1,124 @@
+@import "variables";
+@import "mixin";
+
+* {
+  font-family: 'Lato', sans-serif;
+}
+
+.footer {
+  background: $footer-back;
+  padding: 30px 40px;
+
+  &_block {
+    @include gridTemplate;
+  }
+
+  &_rights {
+    display: flex;
+    align-items: center;
+  }
+
+  &_pay {
+    @include flexBetween;
+    position: relative;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    &::before {
+      @include line;
+      left: -50px;
+    }
+  }
+
+  &_social {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    position: relative;
+    margin-left: 20px;
+
+    &::before {
+      @include line;
+      left: 10px;
+    }
+  }
+
+  &_item {
+    display: flex;
+    align-items: flex-end;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  &_img {
+    margin-right: 10px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &_desc {
+    @include textEllipsis;
+    @include text(400, 13px, 16px,$gray);
+    max-width: 310px;
+    background-image: linear-gradient(
+        to right,
+        $highlight,
+        $highlight 50%,
+        $light 50%
+    );
+    background-size: 200% 100%;
+    background-position: -100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.5s ease-in-out;
+
+    &:hover {
+      background-position: 0;
+    }
+
+    &-light {
+      color: $light;
+      &:hover {
+        background-position: -100%;
+      }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .footer {
+    &_block {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    &_pay, &_social {
+      @include gridTemplate;
+      gap: 10px;
+      margin-left: 0;
+
+      &::before {
+        display: none;
+      }
+    }
+  }
+}
+@media (max-width: 425px) {
+  .footer {
+    &_pay, &_social {
+      grid-template-columns: 1fr;
+    }
+
+    &_desc {
+      max-width: 240px;
+      white-space: inherit;
+    }
+  }
+}
+
+
+
+

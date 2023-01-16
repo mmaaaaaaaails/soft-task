@@ -1,0 +1,164 @@
+@import "variables";
+@import "mixin";
+
+* {
+  font-family: 'Lato', sans-serif;
+}
+
+.header {
+  background: rgba(16, 16, 29, 0.9);
+  padding: 32px 40px;
+  width: 100%;
+  position: fixed;
+  z-index: 2;
+
+  &_block {
+    @include flexBetween;
+  }
+
+  &_title {
+    @include text(700, 28px, 33px, $light);
+    font-family: 'Raleway', sans-serif;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    &-highlight {
+      color: $highlight;
+    }
+  }
+}
+
+.hamburger {
+  display: none;
+}
+
+.menu {
+  @include flexBetween;
+
+  &_lists {
+    @include flexBetween;
+    @include text(600, 13px, 16px, $light);
+    text-transform: uppercase;
+  }
+
+  &_item {
+    display: flex;
+    align-items: center;
+    margin-right: 60px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &_link {
+    color: $light;
+    text-decoration: none;
+
+    &-active {
+      color: $highlight;
+    }
+
+    &:hover {
+      color: $highlight;
+      transition: 0.5s all;
+    }
+  }
+}
+
+
+@media (max-width: 1024px) {
+  .menu {
+    &_item {
+      margin-right: 40px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+
+  .hamburger {
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    z-index: 5;
+    top: 6px;
+
+    &__line-one, &__line-two, &__line-three {
+      width: 35px;
+      height: 3px;
+      background-color: $highlight-medium;
+      transition: 0.4s;
+      margin-bottom: 6px;
+    }
+
+    .change &__line-one  {
+      transform: rotate(-45deg) translate(-8px, 7px) ;
+    }
+
+    .change &__line-two {
+      opacity: 0;
+    }
+
+    .change &__line-three {
+      transform: rotate(45deg) translate(-5px, -5px) ;
+    }
+  }
+
+  .menu {
+    &_lists {
+      @include flexCenter;
+      flex-direction: column;
+      padding: 0 40px;
+      font-size: 22px;
+      color: $light;
+      position: fixed;
+      min-width: 300px;
+      background-color: $dark-another;
+      height: 100%;
+      top: 0;
+      right: -400px;
+      transition: right .5s;
+      z-index: 4;
+
+      &-active {
+        right: 0;
+      }
+    }
+
+    &_item {
+      @include textEllipsis;
+      max-width: 240px;
+      margin-right: 0;
+      line-height: 20px;
+      margin-bottom: 10px;
+    }
+  }
+
+  .overlay--active {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(41, 41, 41, 0.6);
+    z-index: 1;
+  }
+}
+
+@media (max-width: 425px) {
+  .header {
+    padding: 32px 20px;
+    &_title {
+      font-size: 24px;
+    }
+  }
+
+  .menu {
+    &_lists {
+      font-size: 18px;
+      min-width: 240px;
+    }
+  }
+}
+

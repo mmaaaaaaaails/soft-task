@@ -1,0 +1,63 @@
+@import "variables";
+
+@mixin flexBetween {
+  display: flex;
+  justify-content: space-between;
+}
+
+@mixin flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin text ($weight, $size, $line-height, $color) {
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $line-height;
+  color: $color;
+}
+
+@mixin defaultText {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+@mixin textEllipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}
+
+@mixin line {
+  content: '';
+  position: absolute;
+  height: 18px;
+  width: 1px;
+  background-color: $gray;
+}
+
+@mixin gridTemplate {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+@mixin thumbForBrowsers {
+  -webkit-appearance: none;
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  background: #42A9ED;
+  cursor: ew-resize;
+  transition: background .3s ease-in-out;
+  border: 3px solid $highlight-dark;
+}
+
+@mixin rangeForBrowsers {
+  -webkit-appearance: none;
+  box-shadow: none;
+  border: none;
+  background: transparent;
+}

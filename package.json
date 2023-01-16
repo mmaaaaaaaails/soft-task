@@ -5,9 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack serve --progress",
-    "build": "webpack --node-env=production",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "build": "webpack --node-env=production"
   },
   "keywords": [],
   "author": "",

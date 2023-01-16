@@ -19,7 +19,7 @@ uploadFile.addEventListener('change', () => {
 deleteFile.addEventListener('click', () => {
     uploadFileBtn.innerHTML = '';
     uploadFileBtn.insertAdjacentHTML("afterbegin",
-      `<img src='../images/order/file.svg' alt='file'>
+      `<img src='assets/images/order/file.svg' alt='file'>
             <span class="form_file-desc">ПРИКРЕПИТЬ ФАЙЛ</span>`
     );
     deleteFile.classList.add('hide');
